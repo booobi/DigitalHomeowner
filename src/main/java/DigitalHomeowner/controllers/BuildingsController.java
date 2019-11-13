@@ -37,9 +37,10 @@ public class BuildingsController {
     }
 
     @PostMapping("/buildings/create")
-    public String createBuildingPost(BuildingBindingModel buildingBindingModel) {
+    public String createBuildingPost(BuildingBindingModel buildingBindingModel, Model model) {
         buildingService.create(buildingBindingModel);
-
-        return "redirect:/buildings/create";
+        model.addAttribute("createSuccess", true);
+        model.addAttribute("view", "buildings/create");
+        return "base-layout";
     }
 }
