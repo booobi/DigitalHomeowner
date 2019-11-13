@@ -26,4 +26,62 @@ public class Building {
         this.commonArea = commonArea;
         this.people = people;
     }
+
+    public Building() {}
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getFloors() {
+        return floors;
+    }
+
+    public void setFloors(Integer floors) {
+        this.floors = floors;
+    }
+
+    public Integer getApartments() {
+        return apartments;
+    }
+
+    public void setApartments(Integer apartments) {
+        this.apartments = apartments;
+    }
+
+    public Double getBuildArea() {
+        return buildArea;
+    }
+
+    public void setBuildArea(Double buildArea) {
+        this.buildArea = buildArea;
+    }
+
+    public Double getCommonArea() {
+        return commonArea;
+    }
+
+    public void setCommonArea(Double commonArea) {
+        this.commonArea = commonArea;
+    }
+
+    public List<Person> getPeople() {
+        return people;
+    }
+
+    public void setPeople(List<Person> people) {
+        this.people = people;
+    }
 }

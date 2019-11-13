@@ -6,6 +6,8 @@ import DigitalHomeowner.repositories.BuildingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BuildingServiceImpl extends BuildingService {
 
@@ -24,5 +26,10 @@ public class BuildingServiceImpl extends BuildingService {
 
         );
         buildingRepository.saveAndFlush(newBuilding);
+    }
+
+    @Override
+    public List<Building> getAll() {
+        return buildingRepository.findAll();
     }
 }

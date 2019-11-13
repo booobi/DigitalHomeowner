@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+
+        <div class="row justify-content-around">
+            <form action="/buildings/create">
+                <button type="submit" class="btn btn-primary">Register Building</button>
+            </form>
+            <button class="btn btn-primary">Manage Employees</button>
+        </div>
+
+        <th:block th:if="${buildings.size()==0}">
+            <div style="margin-top:30px;" class="row justify-content-center">
+                <p>There are currently no buildings to manage.
+                    <br>
+                    Click on the '<strong>Register Building</strong>' button to add a new building.
+                </p>
+
+            </div>
+        </th:block>
+
+        <div style="margin-top:30px;" class="building-list">
+            <ul class="list-group">
+
+                <th:block th:each="building : ${buildings}">
+                    <li th:text="${building.getAddress()}" class="list-group-item"></li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+
+</div>
