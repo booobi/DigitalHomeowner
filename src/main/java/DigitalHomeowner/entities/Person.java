@@ -1,9 +1,6 @@
 package DigitalHomeowner.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Person {
@@ -11,9 +8,21 @@ public class Person {
     @Id
     String id;
 
+    @Column(nullable = false)
     String firstName;
+
+    @Column(nullable = false)
     String lastName;
+
+    @Column(nullable = false)
     Integer age;
+
+    @Column(nullable = false)
     String gender;
+
+    @Column(nullable = false)
     Boolean isEmployee;
+
+    @ManyToOne
+    Building building;
 }
