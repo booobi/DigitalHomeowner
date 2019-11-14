@@ -15,16 +15,20 @@ public class Building {
     Double buildArea;
     Double commonArea;
 
-    @OneToMany(mappedBy = "building")
-    List<Person> people;
+    @OneToMany(mappedBy = "inhibitedBuilding")
+    List<Person> inhabitants;
 
-    public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Person> people) {
+    @OneToOne(mappedBy = "managedBuilding")
+    Person manager;
+
+
+    public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Person> inhabitants) {
         this.address = address;
         this.floors = floors;
         this.apartments = apartments;
         this.buildArea = buildArea;
         this.commonArea = commonArea;
-        this.people = people;
+        this.inhabitants = inhabitants;
     }
 
     public Building() {}
@@ -77,11 +81,11 @@ public class Building {
         this.commonArea = commonArea;
     }
 
-    public List<Person> getPeople() {
-        return people;
+    public List<Person> getInhabitants() {
+        return inhabitants;
     }
 
-    public void setPeople(List<Person> people) {
-        this.people = people;
+    public void setInhabitants(List<Person> Inhabitant) {
+        this.inhabitants = inhabitants;
     }
 }

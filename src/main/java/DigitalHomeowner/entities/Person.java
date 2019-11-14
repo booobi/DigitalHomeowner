@@ -4,8 +4,9 @@ import javax.persistence.*;
 
 @Entity
 public class Person {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String id;
 
     @Column(nullable = false)
@@ -20,9 +21,10 @@ public class Person {
     @Column(nullable = false)
     String gender;
 
-    @Column(nullable = false)
-    Boolean isEmployee;
+    @ManyToOne()
+    Building inhibitedBuilding;
 
-    @ManyToOne
-    Building building;
+    Boolean isEmployee;
+    @OneToOne()
+    Building managedBuilding;
 }
