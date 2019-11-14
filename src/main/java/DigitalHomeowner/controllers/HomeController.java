@@ -23,10 +23,11 @@ public class HomeController {
     @RequestMapping("/home")
     public String home(Model model) {
 
-        List<Building> buildings = this.buildingService.getAll();
+        List<Building> allBuildings = buildingService.getAll();
 
+        model.addAttribute("buildings", allBuildings);
         model.addAttribute("view", "home");
-        model.addAttribute("buildings", buildings);
+
         return "base-layout";
     }
 

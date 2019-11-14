@@ -10,25 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class BuildingsController {
 
     @Autowired
     private BuildingService buildingService;
-
-    @GetMapping("/buildings")
-    public String index(Model model) {
-
-        List<Building> allBuildings = buildingService.getAll();
-
-        model.addAttribute("buildings", allBuildings);
-        model.addAttribute("view", "buildings/index");
-
-        return "base-layout";
-    }
-
 
     @GetMapping("/buildings/create")
     public String createBuildingGet(Model model) {
