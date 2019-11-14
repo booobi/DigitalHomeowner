@@ -3,16 +3,15 @@
 
         <div class="row justify-content-around">
             <form action="/buildings/create">
-                <button type="submit" class="btn btn-primary">Register Building</button>
+                <button type="submit" class="btn btn-primary">Register New Building</button>
             </form>
-            <button class="btn btn-primary">Manage Employees</button>
         </div>
 
         <th:block th:if="${buildings.size()==0}">
             <div style="margin-top:30px;" class="row justify-content-center">
                 <p>There are currently no buildings to manage.
                     <br>
-                    Click on the '<strong>Register Building</strong>' button to add a new building.
+                    Click on the '<strong>Register new Building</strong>' button to add a new building.
                 </p>
 
             </div>
@@ -22,7 +21,10 @@
             <ul class="list-group">
 
                 <th:block th:each="building : ${buildings}">
-                    <li th:text="${building.getAddress()}" class="list-group-item"></li>
+                    <li class="list-group-item">
+                        <th:block th:text="${building.getAddress()}"></th:block>
+                        <a th:href="'/buildings/' + ${building.getId()} + '/edit'" style="float:right">Edit</a>
+                    </li>
                 </th:block>
             </ul>
         </div>

@@ -24,7 +24,6 @@ public class BuildingServiceImpl extends BuildingService {
     @Override
     public void create(BuildingBindingModel bbm) {
 
-
         Building newBuilding = new Building(
                 bbm.address,
                 bbm.floors,
@@ -38,23 +37,44 @@ public class BuildingServiceImpl extends BuildingService {
         List<String> inhabitantsStrings = bbm.getInhabitants();
         List<Inhabitant> inhabitantsToSave = new ArrayList<>();
         if(inhabitantsStrings != null) {
-            inhabitantsToSave = bbm.getInhabitants()
-                    .stream()
-                    .filter((inhName) -> inhName != null)
-                    .filter((inhName) -> !inhName.equals(""))
-                    .map((inhName) -> new Inhabitant(inhName, newBuilding))
-                    .collect(Collectors.toList());
-
+            inhabitantsToSave = this.attachStringInhabitantsToBuilding(inhabitantsStrings, newBuilding);
         }
 
         buildingRepository.saveAndFlush(newBuilding);
         inhabitantRepository.saveAll(inhabitantsToSave);
+    }
 
+    @Override
+    public void edit(String id, BuildingBindingModel bbm) {
+        Building selectedBuilding = this.buildingRepository.getOne(id);
+        selectedBuilding.setAddress(bbm.address);
+        selectedBuilding.setFloors(bbm.floors);
+        selectedBuilding.setApartments(bbm.apartments);
+        selectedBuilding.setBuildArea(bbm.buildingArea);
+        selectedBuilding.setCommonArea(bbm.commonArea);
 
+        List<Inhabitant> newInhabitants = attachStringInhabitantsToBuilding(bbm.getInhabitants(), selectedBuilding);
+
+        this.buildingRepository.saveAndFlush(selectedBuilding);
+        this.inhabitantRepository.saveAll(newInhabitants);
     }
 
     @Override
     public List<Building> getAll() {
         return buildingRepository.findAll();
+    }
+
+    @Override
+    public Building getById(String id) {
+        return this.buildingRepository.getOne(id);
+    }
+
+    private List<Inhabitant> attachStringInhabitantsToBuilding(List<String> inhabitants, Building building) {
+        return inhabitants
+                .stream()
+                .filter((inhName) -> inhName != null)
+                .filter((inhName) -> !inhName.equals(""))
+                .map((inhName) -> new Inhabitant(inhName, building))
+                .collect(Collectors.toList());
     }
 }

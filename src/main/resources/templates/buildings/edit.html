@@ -1,0 +1,72 @@
+<th:block th:if="${createSuccess}">
+    <div class="row justify-content-around">
+        <p>Building successfully edited! You can now go back to the <a href="/buildings">buildings list</a>.</p>
+    </div>
+</th:block>
+
+
+<th:block th:if="!${createSuccess}">
+
+    <form id="buildingForm" method="post" class="justify-content-around">
+
+        <div class="col-sm-8" style="margin: auto;">
+            <div class="form-group row justify-content-start">
+                <label for="address" class="col-sm-3">Building address:</label>
+                <input required th:value="${building.address}" type="address" name="address" class="form-control col-sm-8">
+            </div>
+            <div class="form-group row justify-content-start">
+                <label for="floors" class="col-sm-3">Building floors:</label>
+
+                <input type="number" th:value="${building.floors}" name="floors" class="form-control col-sm-2" min="1"
+                       style="display: inline;" placeholder="Floors">
+            </div>
+            <div class="form-group row justify-content-start">
+                <label for="apartments" class="col-sm-3">Building apartments:</label>
+                <input type="number" th:value="${building.apartments}" name="apartments" class="form-control col-sm-1" min="1"
+                       style="display: inline;" placeholder="Apartments">
+            </div>
+            <div class="form-group row justify-content-start">
+                <label for="buildingArea" class="col-sm-3">Building area:</label>
+                <input type="number" th:value="${building.buildArea}" name="buildingArea" class="form-control col-sm-1" min="0" step="0.1"
+                       style="display: inline;">
+                <p>m<sup>2</sup></p>
+            </div>
+            <div class="form-group row justify-content-start">
+                <label for="commonArea" class="col-sm-3">Common area:</label>
+                <input type="number" th:value="${building.commonArea}" name="commonArea" class="form-control col-sm-1" min="0" step="0.1"
+                       style="display: inline;">
+                <p>m<sup>2</sup></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <th:block th:each="inhabitant : ${building.inhabitants}">
+                    <li class="list-group-item">
+                        <th:block th:text="${inhabitant.getName()}"></th:block>
+                        <a href="#" style="float:right">
+                         Edit
+                        </a>
+                    </li>
+                </th:block>
+            </ul>
+            <div id="inhabitantFields"></div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='/buildings'">Back</button>
+            <button type="button" class="btn btn-secondary" onclick="addInhField()">Add Inhabitant</button>
+
+        </div>
+    </form>
+
+    <script>
+        let cnt = 0;
+        function addInhField() {
+            let newInput = document.createElement("div");
+            newInput.classList.add("form-group");
+            newInput.innerHTML = "<label for=\"name\" class=\"col-sm-3\">Inhibitant name:</label><button class=\"btn btn-danger\" onclick=\"removeInhFields(event)\">X</button><input type=\"text\" name=\"inhabitants["+ cnt++ +"]\" class=\"form-control col-sm-8\" placeholder=\"Enter inhibitant name\">"
+
+            document.getElementById("inhabitantFields").appendChild(newInput);
+        }
+
+        function removeInhFields(e) {
+            e.target.parentElement.remove();
+        }
+    </script>
+</th:block>
