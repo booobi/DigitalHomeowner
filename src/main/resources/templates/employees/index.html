@@ -1,0 +1,28 @@
+<div class="row justify-content-center mb-3">
+    <form action="/employees/create">
+        <button class="btn btn-primary">Add new Employee</button>
+    </form>
+</div>
+
+<div class="row justify-content-around">
+
+    <th:block th:if="${employees == null}">
+        <div class="col-md-6 justify-content-center">
+            <p>There are currently no employees to manage.
+                <br>
+                Click on the '<strong>Add new Employee</strong>' button to add a new employee.
+            </p>
+        </div>
+    </th:block>
+
+    <th:block th:if="${employees} != null">
+        <div class="col-md-6">
+            <h4 style="text-align: center;">Employee list:</h4>
+            <ul class="list-group">
+                <li class="list-group-item">test <a style="float: right;" href="#">Manage</a></li>
+                <li class="list-group-item">test <a style="float: right;" href="#">Manage</a></li>
+                <li class="list-group-item">test <a style="float: right;" href="#">Manage</a></li>
+            </ul>
+        </div>
+    </th:block>
+</div>
