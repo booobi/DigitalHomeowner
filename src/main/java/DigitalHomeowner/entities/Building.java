@@ -19,7 +19,7 @@ public class Building {
     @ManyToOne()
     Employee manager;
 
-    @OneToMany(mappedBy = "building")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "building")
     List<Inhabitant> inhabitants;
 
     public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Inhabitant> inhabitants) {

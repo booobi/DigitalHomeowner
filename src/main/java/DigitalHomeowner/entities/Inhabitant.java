@@ -5,24 +5,19 @@ import javax.persistence.*;
 @Entity
 public class Inhabitant {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     String Id;
 
-    String firstName;
-    String lastName;
-    Integer age;
-    String gender;
+    String name;
 
     @ManyToOne
     Building building;
+
     public Inhabitant() {
     }
 
-    public Inhabitant(String id, String firstName, String lastName, Integer age, String gender) {
-        Id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.gender = gender;
+    public Inhabitant(String name, Building building) {
+         this.name = name;
+         this.building = building;
     }
 }

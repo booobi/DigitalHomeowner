@@ -1,11 +1,14 @@
 package DigitalHomeowner.bindingModels;
 
+import java.util.List;
+
 public class BuildingBindingModel {
     public String address;
     public Integer floors;
     public Integer apartments;
     public Double buildingArea;
     public Double commonArea;
+    public List<String> inhabitants;
 
     public String getAddress() {
         return address;
@@ -45,5 +48,13 @@ public class BuildingBindingModel {
 
     public void setCommonArea(Double commonArea) {
         this.commonArea = commonArea;
+    }
+
+    public List<String> getInhabitants() {
+        return inhabitants;
+    }
+
+    public void setInhabitants(List<String> inhabitants) {
+        this.inhabitants = inhabitants;
     }
 }
