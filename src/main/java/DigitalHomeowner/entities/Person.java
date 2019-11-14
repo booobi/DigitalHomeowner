@@ -24,7 +24,9 @@ public class Person {
     @ManyToOne()
     Building inhibitedBuilding;
 
+    @Column(nullable = false)
     Boolean isEmployee;
-    @OneToOne()
+
+    @OneToMany(mappedBy = "manager")
     Building managedBuilding;
 }

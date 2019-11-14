@@ -18,7 +18,7 @@ public class Building {
     @OneToMany(mappedBy = "inhibitedBuilding")
     List<Person> inhabitants;
 
-    @OneToOne(mappedBy = "managedBuilding")
+    @ManyToOne()
     Person manager;
 
 
