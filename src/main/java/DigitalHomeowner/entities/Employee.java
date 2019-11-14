@@ -1,9 +1,10 @@
 package DigitalHomeowner.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Person {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +22,6 @@ public class Person {
     @Column(nullable = false)
     String gender;
 
-    @ManyToOne()
-    Building inhibitedBuilding;
-
-    @Column(nullable = false)
-    Boolean isEmployee;
-
     @OneToMany(mappedBy = "manager")
-    Building managedBuilding;
+    List<Building> managedBuildings;
 }

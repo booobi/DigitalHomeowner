@@ -1,6 +1,7 @@
 package DigitalHomeowner.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,14 +16,13 @@ public class Building {
     Double buildArea;
     Double commonArea;
 
-    @OneToMany(mappedBy = "inhibitedBuilding")
-    List<Person> inhabitants;
-
     @ManyToOne()
-    Person manager;
+    Employee manager;
 
+    @OneToMany(mappedBy = "building")
+    List<Inhabitant> inhabitants;
 
-    public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Person> inhabitants) {
+    public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Inhabitant> inhabitants) {
         this.address = address;
         this.floors = floors;
         this.apartments = apartments;
@@ -81,11 +81,11 @@ public class Building {
         this.commonArea = commonArea;
     }
 
-    public List<Person> getInhabitants() {
+    public List<Inhabitant> getInhabitants() {
         return inhabitants;
     }
 
-    public void setInhabitants(List<Person> Inhabitant) {
+    public void setInhabitants(List<Inhabitant> inhabitants) {
         this.inhabitants = inhabitants;
     }
 }
