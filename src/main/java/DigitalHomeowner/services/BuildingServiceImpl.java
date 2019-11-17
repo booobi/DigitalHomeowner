@@ -70,6 +70,7 @@ public class BuildingServiceImpl extends BuildingService {
     }
 
     private List<Inhabitant> attachStringInhabitantsToBuilding(List<String> inhabitants, Building building) {
+        if (inhabitants == null) return new ArrayList<>();
         return inhabitants
                 .stream()
                 .filter((inhName) -> inhName != null)

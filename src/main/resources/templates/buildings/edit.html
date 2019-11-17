@@ -41,7 +41,7 @@
                 <th:block th:each="inhabitant : ${building.inhabitants}">
                     <li class="list-group-item">
                         <th:block th:text="${inhabitant.getName()}"></th:block>
-                        <a href="#" style="float:right">
+                        <a th:href="'/inhabitants/' + ${inhabitant.getId()} + '/edit'" style="float:right">
                          Edit
                         </a>
                     </li>
