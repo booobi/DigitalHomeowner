@@ -68,7 +68,7 @@ public class EmployeeServiceImpl extends EmployeeService {
                 building.setManager(null);
             }
         }
-        
+
         this.employeeRepository.saveAndFlush(employee);
     }
 }

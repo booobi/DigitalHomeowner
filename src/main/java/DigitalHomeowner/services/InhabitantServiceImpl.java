@@ -20,6 +20,11 @@ public class InhabitantServiceImpl extends InhabitantService {
         this.inhabitantRepository.saveAndFlush(inhabitant);
     }
 
+    @Override
+    public void delete(String id) {
+        this.inhabitantRepository.deleteById(id);
+    }
+
     public Inhabitant getById(String id) {
         return this.inhabitantRepository.getOne(id);
     }

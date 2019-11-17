@@ -6,6 +6,7 @@ import DigitalHomeowner.services.InhabitantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,5 +34,13 @@ public class InhabitantsController {
         this.inhabitantService.edit(id, ibm);
 
         return "redirect:/buildings/" + inhabitant.getBuilding().getId() + "/edit";
+    }
+
+    @PostMapping("/inhabitants/{id}/delete")
+    public String deleteInhabitantPost(@PathVariable("id") String id) {
+        String buildingId = this.inhabitantService.getById(id).getBuilding().getId();
+        this.inhabitantService.delete(id);
+
+        return "redirect:/buildings/" + buildingId + "/edit";
     }
 }

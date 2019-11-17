@@ -37,7 +37,7 @@ public class BuildingServiceImpl extends BuildingService {
         List<String> inhabitantsStrings = bbm.getInhabitants();
         List<Inhabitant> inhabitantsToSave = new ArrayList<>();
         if(inhabitantsStrings != null) {
-            inhabitantsToSave = this.attachStringInhabitantsToBuilding(inhabitantsStrings, newBuilding);
+            inhabitantsToSave = this.getInhabitantsFromStringList(inhabitantsStrings, newBuilding);
         }
 
         buildingRepository.saveAndFlush(newBuilding);
@@ -53,9 +53,11 @@ public class BuildingServiceImpl extends BuildingService {
         selectedBuilding.setBuildArea(bbm.buildingArea);
         selectedBuilding.setCommonArea(bbm.commonArea);
 
-        List<Inhabitant> newInhabitants = attachStringInhabitantsToBuilding(bbm.getInhabitants(), selectedBuilding);
+        List<Inhabitant> newInhabitants = getInhabitantsFromStringList(bbm.getInhabitants(), selectedBuilding);
+        selectedBuilding.addInhabitants(newInhabitants);
 
         this.buildingRepository.saveAndFlush(selectedBuilding);
+        this.inhabitantRepository.saveAll(newInhabitants);
     }
 
     @Override
@@ -68,7 +70,7 @@ public class BuildingServiceImpl extends BuildingService {
         return this.buildingRepository.getOne(id);
     }
 
-    private List<Inhabitant> attachStringInhabitantsToBuilding(List<String> inhabitants, Building building) {
+    private List<Inhabitant> getInhabitantsFromStringList(List<String> inhabitants, Building building) {
         if (inhabitants == null) return new ArrayList<>();
         return inhabitants
                 .stream()

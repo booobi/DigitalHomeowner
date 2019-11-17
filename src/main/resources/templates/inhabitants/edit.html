@@ -3,7 +3,6 @@
         <p>Inhabitant successfully edited! You can now go <a href="#" onclick="window.history.back()">back</a>.</p>
     </div>
 </th:block>
-
 <th:block th:if="!${editSuccess}">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -13,7 +12,10 @@
                     <input th:value="${inhabitant.getName()}" name="name" type="text" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" onclick="window.location.href='/buildings/' + ${inhabitant.getBuilding().getId()} + 'edit'">Cancel</button>
+                <button type="button" class="btn btn-secondary" th:onclick="window.history.back()">Cancel</button>
+            </form>
+            <form th:action="'/inhabitants/' + ${inhabitant.getId()} + '/delete'" method="POST">
+                <button class="btn btn-danger" type="submit">Delete</button>
             </form>
         </div>
     </div>

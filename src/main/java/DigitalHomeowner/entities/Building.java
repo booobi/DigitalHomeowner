@@ -32,6 +32,10 @@ public class Building {
 
     public Building() {}
 
+    public void addInhabitants(List<Inhabitant> inhabitants) {
+        this.inhabitants.addAll(inhabitants);
+    }
+
     public String getId() {
         return id;
     }
