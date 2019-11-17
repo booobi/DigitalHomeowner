@@ -1,11 +1,16 @@
 package DigitalHomeowner.bindingModels;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class EmployeeBindingModel {
 
     private String fName;
     private String lName;
     private Integer age;
     private String gender;
+    private List<String> buildingIdsToManage;
 
     public String getfName() {
         return fName;
@@ -37,5 +42,13 @@ public class EmployeeBindingModel {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public List<String> getBuildingIdsToManage() {
+        return buildingIdsToManage;
+    }
+
+    public void setBuildingIdsToManage(List<String> buildingIdsToManage) {
+        this.buildingIdsToManage = buildingIdsToManage;
     }
 }

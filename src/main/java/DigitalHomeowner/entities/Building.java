@@ -1,7 +1,6 @@
 package DigitalHomeowner.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +18,7 @@ public class Building {
     @ManyToOne()
     Employee manager;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "building")
+    @OneToMany(mappedBy = "building")
     List<Inhabitant> inhabitants;
 
     public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Inhabitant> inhabitants) {
@@ -87,5 +86,13 @@ public class Building {
 
     public void setInhabitants(List<Inhabitant> inhabitants) {
         this.inhabitants = inhabitants;
+    }
+
+    public Employee getManager() {
+        return manager;
+    }
+
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
 }

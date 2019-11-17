@@ -56,7 +56,6 @@ public class BuildingServiceImpl extends BuildingService {
         List<Inhabitant> newInhabitants = attachStringInhabitantsToBuilding(bbm.getInhabitants(), selectedBuilding);
 
         this.buildingRepository.saveAndFlush(selectedBuilding);
-        this.inhabitantRepository.saveAll(newInhabitants);
     }
 
     @Override

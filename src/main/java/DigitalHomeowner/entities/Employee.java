@@ -2,6 +2,7 @@ package DigitalHomeowner.entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -23,16 +24,20 @@ public class Employee {
     String gender;
 
     @OneToMany(mappedBy = "manager")
-    List<Building> managedBuildings;
+    Set<Building> managedBuildings;
 
     public Employee() {}
 
-    public Employee(String firstName, String lastName, Integer age, String gender, List<Building> managedBuildings) {
+    public Employee(String firstName, String lastName, Integer age, String gender, Set<Building> managedBuildings) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
         this.managedBuildings = managedBuildings;
+    }
+
+    public void addManagedBuilding(Building building) {
+        this.managedBuildings.add(building);
     }
 
     public String getId() {
@@ -75,11 +80,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public List<Building> getManagedBuildings() {
+    public Set<Building> getManagedBuildings() {
         return managedBuildings;
     }
 
-    public void setManagedBuildings(List<Building> managedBuildings) {
+    public void setManagedBuildings(Set<Building> managedBuildings) {
         this.managedBuildings = managedBuildings;
     }
 }
