@@ -95,4 +95,18 @@ public class EmployeesController {
 
         return "base-layout";
     }
+
+    @PostMapping("/employees/{id}/delete")
+    public String deleteEmployeePost(@PathVariable("id") String id) {
+        Employee employeeToDelete = this.employeeService.getById(id);
+
+        for (Building managedBuilding :
+                employeeToDelete.getManagedBuildings()) {
+            this.buildingService.removeManager(managedBuilding.getId());
+        }
+
+        this.employeeService.deleteById(id);
+
+        return "redirect:/employees";
+    }
 }

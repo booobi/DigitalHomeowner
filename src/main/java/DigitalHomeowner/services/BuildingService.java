@@ -10,4 +10,5 @@ public abstract class BuildingService {
     public abstract void edit(String id, BuildingBindingModel bbm);
     public abstract List<Building> getAll();
     public abstract Building getById(String id);
+    public abstract void removeManager(String id);
 }

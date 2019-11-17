@@ -58,4 +58,7 @@
 
         </div>
     </form>
+    <form th:action="'/employees/' + ${employee.getId()} + '/delete'" method="POST">
+        <button class="btn btn-danger" type="submit">Delete</button>
+    </form>
 </th:block>

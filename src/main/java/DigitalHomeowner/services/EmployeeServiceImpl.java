@@ -71,4 +71,14 @@ public class EmployeeServiceImpl extends EmployeeService {
 
         this.employeeRepository.saveAndFlush(employee);
     }
+
+    @Override
+    public void deleteById(String id) {
+        Employee employee = this.employeeRepository.getOne(id);
+        for (Building building:
+             employee.getManagedBuildings()) {
+            building.setManager(null);
+        }
+        this.employeeRepository.deleteById(id);
+    }
 }

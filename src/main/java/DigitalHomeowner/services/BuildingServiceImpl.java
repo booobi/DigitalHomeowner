@@ -79,4 +79,12 @@ public class BuildingServiceImpl extends BuildingService {
                 .map((inhName) -> new Inhabitant(inhName, building))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void removeManager(String id) {
+        Building building = this.buildingRepository.getOne(id);
+        building.setManager(null);
+
+        this.buildingRepository.saveAndFlush(building);
+    }
 }
