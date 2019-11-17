@@ -81,4 +81,10 @@ public class EmployeeServiceImpl extends EmployeeService {
         }
         this.employeeRepository.deleteById(id);
     }
+
+    @Override
+    public void removeManagedBuilding(Employee employee, Building building) {
+        employee.removeManagedBuilding(building);
+        this.employeeRepository.saveAndFlush(employee);
+    }
 }

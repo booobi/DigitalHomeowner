@@ -61,6 +61,11 @@ public class BuildingServiceImpl extends BuildingService {
     }
 
     @Override
+    public void delete(Building building) {
+        this.buildingRepository.delete(building);
+    }
+
+    @Override
     public List<Building> getAll() {
         return buildingRepository.findAll();
     }

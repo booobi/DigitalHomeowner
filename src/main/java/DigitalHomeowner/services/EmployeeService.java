@@ -11,6 +11,7 @@ public abstract class EmployeeService {
     public abstract void create(EmployeeBindingModel ebm, Set<Building> buildings);
     public abstract void edit(String id, EmployeeBindingModel ebm, Set<Building> buildings);
     public abstract void deleteById(String id);
+    public abstract void removeManagedBuilding(Employee employee, Building building);
     public abstract Employee getById(String id);
     public abstract List<Employee> getAll();
 }

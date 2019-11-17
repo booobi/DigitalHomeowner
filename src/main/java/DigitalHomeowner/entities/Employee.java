@@ -39,6 +39,9 @@ public class Employee {
     public void addManagedBuilding(Building building) {
         this.managedBuildings.add(building);
     }
+    public void removeManagedBuilding(Building building) {
+        this.managedBuildings.remove(building);
+    }
 
     public String getId() {
         return id;

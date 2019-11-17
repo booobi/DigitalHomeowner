@@ -14,7 +14,8 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" th:onclick="window.history.back()">Cancel</button>
             </form>
-            <form th:action="'/inhabitants/' + ${inhabitant.getId()} + '/delete'" method="POST">
+
+            <form class="mt-2" th:action="'/inhabitants/' + ${inhabitant.getId()} + '/delete'" method="POST">
                 <button class="btn btn-danger" type="submit">Delete</button>
             </form>
         </div>
