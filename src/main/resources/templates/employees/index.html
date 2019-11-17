@@ -6,7 +6,7 @@
 
 <div class="row justify-content-around">
 
-    <th:block th:if="${employees == null}">
+    <th:block th:if="${employees.size()} == 0">
         <div class="col-md-6 justify-content-center">
             <p>There are currently no employees to manage.
                 <br>
@@ -15,14 +15,23 @@
         </div>
     </th:block>
 
-    <th:block th:if="${employees} != null">
+    <th:block th:if="${employees.size()} != 0">
         <div class="col-md-6">
             <h4 style="text-align: center;">Employee list:</h4>
             <ul class="list-group">
-                <li class="list-group-item">test <a style="float: right;" href="#">Manage</a></li>
-                <li class="list-group-item">test <a style="float: right;" href="#">Manage</a></li>
-                <li class="list-group-item">test <a style="float: right;" href="#">Manage</a></li>
+                <th:block th:each="employee : ${employees}">
+                    <li class="list-group-item">
+                        <th:block th:text="${employee.getLastName()} + ', ' + ${employee.getFirstName()}">
+                        </th:block>
+                        <a style="float: right;" th:href="'/employees/' +  ${employee.getId()} + '/edit' ">Edit</a>
+                    </li>
+                </th:block>
             </ul>
         </div>
     </th:block>
+
+</div>
+
+<div class="row justify-content-center mt-3">
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/'">Back</button>
 </div>
