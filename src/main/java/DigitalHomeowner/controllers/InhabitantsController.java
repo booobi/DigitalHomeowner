@@ -28,12 +28,10 @@ public class InhabitantsController {
     }
 
     @PostMapping("/inhabitants/{id}/edit")
-    public String editInhabitantPost(@PathVariable("id") String id, InhabitantBindingModel ibm, Model model) {
+    public String editInhabitantPost(@PathVariable("id") String id, InhabitantBindingModel ibm) {
+        Inhabitant inhabitant = this.inhabitantService.getById(id);
         this.inhabitantService.edit(id, ibm);
 
-        model.addAttribute("editSuccess", true);
-        model.addAttribute("view", "inhabitants/edit");
-
-        return "base-layout";
+        return "redirect:/buildings/" + inhabitant.getBuilding().getId() + "/edit";
     }
 }

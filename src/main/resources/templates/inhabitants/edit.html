@@ -9,11 +9,11 @@
         <div class="col-md-6">
             <form method="POST">
                 <div class="form-group">
-                    <label for="inhName">Inhabitant Name:</label>
-                    <input th:value="${inhabitant.getName()}" name="inhName" type="text" class="form-control">
+                    <label for="name">Inhabitant Name:</label>
+                    <input th:value="${inhabitant.getName()}" name="name" type="text" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+                <button type="button" class="btn btn-secondary" onclick="window.location.href='/buildings/' + ${inhabitant.getBuilding().getId()} + 'edit'">Cancel</button>
             </form>
         </div>
     </div>
