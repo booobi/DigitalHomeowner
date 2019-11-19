@@ -52,6 +52,16 @@ public class BuildingsController {
         return "base-layout";
     }
 
+    @GetMapping("/buildings/{id}/view")
+    public String viewBuildngGet(@PathVariable("id") String id, Model model) {
+        Building selectedBuilding = buildingService.getById(id);
+
+        model.addAttribute("building", selectedBuilding);
+        model.addAttribute("view", "buildings/view");
+
+        return "base-layout";
+    }
+
     @PostMapping("/buildings/{id}/edit")
     public String editBuildingPost(@PathVariable("id") String id, BuildingBindingModel buildingBindingModel, Model model) {
 

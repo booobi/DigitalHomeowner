@@ -23,7 +23,9 @@
         <div style="margin-top:30px;" class="building-list">
             <ul class="list-group">
                 <th:block th:each="building : ${buildings}">
-                    <li class="list-group-item">
+                    <li style="cursor: pointer;" class="list-group-item list-group-item-action"
+                        th:data1="${building.getId()}"
+                        th:onclick="window.location.href='/buildings/' + this.getAttribute('data1') + '/view'">
                         <th:block th:text="${building.getAddress()}"></th:block>
                         <div style="float:right;">
                             <th:block th:if="${building.getManager()} != null">
@@ -32,7 +34,7 @@
                             <th:block th:if="${building.getManager()} == null">
                                 <p class="mr-5" style="float: left; margin-bottom: 0; color:red;" >Building has no manager!</p>
                             </th:block>
-                            <a th:href="'/buildings/' + ${building.getId()} + '/edit'" style="float:right">Edit</a>
+                            <a onclick="event.stopPropagation();" th:href="'/buildings/' + ${building.getId()} + '/edit'" style="float:right">Edit</a>
 
                         </div>
 

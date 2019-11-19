@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h3>You are viewing building with ID : <strong style="color: red;">12</strong></h3>
+        <div class="row building-info">
+            <div class="col-md-10">
+                <p>
+                    Buidling addresss: <strong th:text="${building.getAddress()}"></strong>
+                    <br>
+                    Building floors: <strong th:text="${building.getFloors()}"></strong>
+                    <br>
+                    Building apartments: <strong th:text="${building.getApartments()}"></strong>
+                    <br>
+                    Building area: <strong th:utext="${building.getBuildArea()} + ' m<sup>2</sup>'"></strong>
+                    <br>
+                    Building common area: <strong th:utext="${building.getCommonArea()} + ' m<sup>2</sup>'"></strong>
+                    <br>
+                </p>
+
+                <th:block th:if="${building.getInhabitants().size()} == 0">
+                    <p><strong style="color:red;">Building has no inhabitants. Edit to add.</strong>
+                </th:block>
+
+                <th:block th:if="${building.getInhabitants().size()} != 0">
+                    <p><strong>List of inhabitants:</strong></p>
+                    <ul th:each="inhabitant : ${building.getInhabitants()}" class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <th:block th:text="${inhabitant.getName()}"></th:block>
+                            <a th:href="'/inhabitants/' + ${inhabitant.getId()} + '/edit'" style="float:right">
+                                Edit
+                            </a>
+                        </li>
+                    </ul>
+                </th:block>
+            </div>
+
+            <div class="col-md-2">
+                <form th:action="'/buildings/' + ${building.getId()} + '/edit'">
+                    <button type="submit" class="btn btn-primary">Edit Building</button>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <th:block th:if="${building.getManager()} == null">
+            <h3 style="color: red;">This building has no manager.</h3>
+            <div class="row employee-info">
+                <p class="col-md-10">You can go to the <a href="/employees">Employee List</a> to set up a manager.</p>
+            </div>
+        </th:block>
+
+        <th:block th:if="${building.getManager()} != null">
+            <h3>Managed by:</h3>
+            <div class="row employee-info">
+                <p class="col-md-10">
+                    Employee name: <strong th:text="${building.getManager().getFirstName()} + ' ' +  ${building.getManager().getLastName()}"></strong>
+                    <br>
+                    Employee age: <strong th:text="${building.getManager().getAge()}"></strong>
+                    <br>
+                    Employee gender: <strong th:text="${building.getManager().getGender()}">male</strong>
+                </p>
+                <div class="col-md-2">
+                    <form th:action="'/employees/' + ${building.getManager().getId()} + '/edit'">
+                        <button type="submit" class="btn btn-primary">Edit Employee</button>
+                    </form>
+                </div>
+            </div>
+        </th:block>
+
+    </div>
+</div>
