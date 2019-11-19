@@ -22,11 +22,20 @@
 
         <div style="margin-top:30px;" class="building-list">
             <ul class="list-group">
-
                 <th:block th:each="building : ${buildings}">
                     <li class="list-group-item">
                         <th:block th:text="${building.getAddress()}"></th:block>
-                        <a th:href="'/buildings/' + ${building.getId()} + '/edit'" style="float:right">Edit</a>
+                        <div style="float:right;">
+                            <th:block th:if="${building.getManager()} != null">
+                                <p class="mr-5" style="float: left; margin-bottom: 0; color:green;" th:text="'Managed by: ' + ${building.getManager().getLastName()}"></p>
+                            </th:block>
+                            <th:block th:if="${building.getManager()} == null">
+                                <p class="mr-5" style="float: left; margin-bottom: 0; color:red;" >Building has no manager!</p>
+                            </th:block>
+                            <a th:href="'/buildings/' + ${building.getId()} + '/edit'" style="float:right">Edit</a>
+
+                        </div>
+
                     </li>
                 </th:block>
             </ul>
