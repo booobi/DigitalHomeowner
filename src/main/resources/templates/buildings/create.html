@@ -37,6 +37,12 @@
                        style="display: inline;">
                 <p>m<sup>2</sup></p>
             </div>
+            <div class="form-group row justify-content-start">
+                <label for="amountToPay" class="col-sm-3">Amount to pay:</label>
+                <input type="number" name="amountToPay" class="form-control col-sm-1" min="1" value="0" step="1.0"
+                       style="display: inline;">
+                <p>&dollar;</p>
+            </div>
             <div id="inhabitantFields"></div>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" class="btn btn-secondary" onclick="addInhField()">Add Inhabitant</button>

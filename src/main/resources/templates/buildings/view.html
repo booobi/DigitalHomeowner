@@ -14,6 +14,8 @@
                     <br>
                     Building common area: <strong th:utext="${building.getCommonArea()} + ' m<sup>2</sup>'"></strong>
                     <br>
+                    Building payroll: <strong th:utext="${building.getAmountToPay()} + '&dollar;'"></strong>
+                    <br>
                 </p>
 
                 <th:block th:if="${building.getInhabitants().size()} == 0">

@@ -14,6 +14,7 @@ public class Building {
     Integer apartments;
     Double buildArea;
     Double commonArea;
+    Double amountToPay;
 
     @ManyToOne()
     Employee manager;
@@ -21,12 +22,13 @@ public class Building {
     @OneToMany(mappedBy = "building")
     List<Inhabitant> inhabitants;
 
-    public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, List<Inhabitant> inhabitants) {
+    public Building(String address, Integer floors, Integer apartments, Double buildArea, Double commonArea, Double amountToPay, List<Inhabitant> inhabitants) {
         this.address = address;
         this.floors = floors;
         this.apartments = apartments;
         this.buildArea = buildArea;
         this.commonArea = commonArea;
+        this.amountToPay = amountToPay;
         this.inhabitants = inhabitants;
     }
 
@@ -82,6 +84,14 @@ public class Building {
 
     public void setCommonArea(Double commonArea) {
         this.commonArea = commonArea;
+    }
+
+    public Double getAmountToPay() {
+        return amountToPay;
+    }
+
+    public void setAmountToPay(Double amountToPay) {
+        this.amountToPay = amountToPay;
     }
 
     public List<Inhabitant> getInhabitants() {

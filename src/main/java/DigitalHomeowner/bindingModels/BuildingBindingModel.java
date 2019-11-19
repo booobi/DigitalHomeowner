@@ -8,6 +8,8 @@ public class BuildingBindingModel {
     public Integer apartments;
     public Double buildingArea;
     public Double commonArea;
+    public Double amountToPay;
+
     public List<String> inhabitants;
 
     public String getAddress() {
@@ -56,5 +58,13 @@ public class BuildingBindingModel {
 
     public void setInhabitants(List<String> inhabitants) {
         this.inhabitants = inhabitants;
+    }
+
+    public Double getAmountToPay() {
+        return amountToPay;
+    }
+
+    public void setAmountToPay(Double amountToPay) {
+        this.amountToPay = amountToPay;
     }
 }

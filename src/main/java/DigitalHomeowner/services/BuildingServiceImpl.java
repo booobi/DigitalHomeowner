@@ -30,6 +30,7 @@ public class BuildingServiceImpl extends BuildingService {
                 bbm.apartments,
                 bbm.buildingArea,
                 bbm.commonArea,
+                bbm.amountToPay,
                 null
         );
 
@@ -52,6 +53,7 @@ public class BuildingServiceImpl extends BuildingService {
         selectedBuilding.setApartments(bbm.apartments);
         selectedBuilding.setBuildArea(bbm.buildingArea);
         selectedBuilding.setCommonArea(bbm.commonArea);
+        selectedBuilding.setAmountToPay(bbm.getAmountToPay());
 
         List<Inhabitant> newInhabitants = getInhabitantsFromStringList(bbm.getInhabitants(), selectedBuilding);
         selectedBuilding.addInhabitants(newInhabitants);

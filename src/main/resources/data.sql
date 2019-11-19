@@ -4,8 +4,8 @@ INSERT INTO EMPLOYEE VALUES
 
 
 INSERT INTO BUILDING VALUES
-                        ('1','Aubrey Ashton Road No.3', 2, 23.33, 23.33, 3, '1'),
-                        ('2','Kingsley Nich 25', 3, 23.33, 23.33, 3, null),
-                        ('3','Shar Mountain 77', 4, 23.33, 23.33, 3, '2');
+                        ('1', 'Aubrey Ashton Road No.3', 300, 2, 23.33, 23.33, 3, '1'),
+                        ('2', 'Kingsley Nich 25', 250, 3, 23.33, 23.33, 3, null),
+                        ('3', 'Shar Mountain 77', 725.50, 4, 23.33, 23.33, 3, '2');
 
 

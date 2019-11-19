@@ -37,6 +37,12 @@
                        style="display: inline;">
                 <p>m<sup>2</sup></p>
             </div>
+            <div class="form-group row justify-content-start">
+                <label for="amountToPay" class="col-sm-3">Amount to pay:</label>
+                <input type="number" th:value="${building.amountToPay}" name="amountToPay" class="form-control col-sm-1" min="1" value="0" step="1.0"
+                       style="display: inline;">
+                <p>&dollar;</p>
+            </div>
             <ul class="list-group list-group-flush">
                 <th:block th:each="inhabitant : ${building.inhabitants}">
                     <li class="list-group-item">
