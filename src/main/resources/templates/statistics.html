@@ -27,13 +27,25 @@
             There are no payments made yet.
         </h5>
 
-        <ul th:if="${payments.size() != 0}" class="list-group">
-            <li class="list-group-item" th:each="payment : ${payments}">
-                <p style="float: left; margin-right: 3em;" th:text="${payment.getBuilding().getAddress()}"></p>
-                <p style="float: left; margin-right: 3em;" th:text="'Payed on: ' + ${payment.getDatePayed()}"></p>
-                <p style="float: left;" th:text="'Payed for: ' + ${payment.getMonthForPayed()}"></p>
-                <p style="float: right;" th:utext="'Amount: <em style=\'color: green;\'>' + ${payment.getAmountPayed()} + ' &dollar;</em>'"></p>
-            </li>
-        </ul>
+        <table th:if="${payments.size() != 0}" class="table">
+            <thead>
+            <tr>
+                <th scope="col">Building Address</th>
+                <th scope="col">Payed On</th>
+                <th scope="col">Payed For</th>
+                <th scope="col">Amount Payed</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="payment : ${payments}">
+                <th scope="row" th:text="${payment.getBuildingAddress()}"></th>
+                <td th:text="${payment.getDatePayed()}"></td>
+                <td th:text="${payment.getMonthForPayedString()}"></td>
+                <td th:utext="'<em style=\'color: green;\'>' + ${payment.getAmountPayed()} + ' &dollar;</em>'"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
     </div>
 </div>

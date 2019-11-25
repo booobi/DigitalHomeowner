@@ -26,14 +26,14 @@ public class PaymentEntryServiceImpl extends PaymentEntryService {
 
     @Override
     public void create(PayementBindingModel pbm, Building building) {
-        PaymentEntry paymentEntry = new PaymentEntry(building, building.getAmountToPay(), new java.sql.Date(new Date().getTime()), pbm.getMonth());
+        PaymentEntry paymentEntry = new PaymentEntry(building.getAddress(), building.getAmountToPay(), new java.sql.Date(new Date().getTime()), pbm.getMonth());
         this.paymentEntryRepository.saveAndFlush(paymentEntry);
     }
 
     @Override
     public List<Integer> getNonPayedMonthsList(Building building) {
         List<Integer> allMonths = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12));
-        List<Integer> unavailableMonths = this.paymentEntryRepository.getAllByBuilding(building)
+        List<Integer> unavailableMonths = this.paymentEntryRepository.getAllByBuildingAddress(building.getAddress())
                 .stream()
                 .map(paymentEntry -> paymentEntry.getMonthForPayed())
                 .collect(Collectors.toList());
