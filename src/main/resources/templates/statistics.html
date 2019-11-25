@@ -1,0 +1,39 @@
+
+<style>
+        p {
+            margin-bottom: 0;
+            display: block;
+        }
+    </style>
+
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h3 style="text-align: center;">Company Statistics:</h3>
+        <p>Total serviced buidlings: <strong th:text="${buildings.size()}"></strong></p>
+        <p>Total serviced apartments: <strong th:text="${apartmentCount}"></strong></p>
+        <p>Total serviced inhabitants: <strong th:text="${inhabitantCount}"></strong></p>
+        <p>Company employees: <strong th:text="${employees.size()}"></strong></p>
+        <p>Company expected monthly income: <strong th:text="${income} + ' &dollar;'"></strong></p>
+        <p>Company current balance: <strong th:text="${balance} + ' &dollar;'"></strong></p>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-2">
+    <div class="col-md-8">
+        <h3 style="text-align: center;">Payment history:</h3>
+
+        <h5 style="text-align: center;" th:if="${payments.size() == 0}">
+            There are no payments made yet.
+        </h5>
+
+        <ul th:if="${payments.size() != 0}" class="list-group">
+            <li class="list-group-item" th:each="payment : ${payments}">
+                <p style="float: left; margin-right: 3em;" th:text="${payment.getBuilding().getAddress()}"></p>
+                <p style="float: left; margin-right: 3em;" th:text="'Payed on: ' + ${payment.getDatePayed()}"></p>
+                <p style="float: left;" th:text="'Payed for: ' + ${payment.getMonthForPayed()}"></p>
+                <p style="float: right;" th:utext="'Amount: <em style=\'color: green;\'>' + ${payment.getAmountPayed()} + ' &dollar;</em>'"></p>
+            </li>
+        </ul>
+    </div>
+</div>

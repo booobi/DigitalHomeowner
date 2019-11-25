@@ -1,7 +1,9 @@
 package DigitalHomeowner.controllers;
 
 import DigitalHomeowner.entities.Building;
+import DigitalHomeowner.entities.Employee;
 import DigitalHomeowner.services.BuildingService;
+import DigitalHomeowner.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +15,7 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    BuildingService buildingService;
+    private BuildingService buildingService;
 
     @RequestMapping("/")
     public String index() {
@@ -30,5 +32,4 @@ public class HomeController {
 
         return "base-layout";
     }
-
 }

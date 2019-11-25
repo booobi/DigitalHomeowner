@@ -20,6 +20,11 @@ public class PaymentEntryServiceImpl extends PaymentEntryService {
     private PaymentEntryRepository paymentEntryRepository;
 
     @Override
+    public List<PaymentEntry> getAll() {
+        return this.paymentEntryRepository.findAll();
+    }
+
+    @Override
     public void create(PayementBindingModel pbm, Building building) {
         PaymentEntry paymentEntry = new PaymentEntry(building, building.getAmountToPay(), new java.sql.Date(new Date().getTime()), pbm.getMonth());
         this.paymentEntryRepository.saveAndFlush(paymentEntry);
