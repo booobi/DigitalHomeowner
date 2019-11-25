@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
     <div class="col-md-8">
-        <h3>You are viewing building with ID : <strong style="color: red;">12</strong></h3>
+        <h3>You are viewing building with ID : <strong th:text="${building.getId()}" style="color: red;"></strong></h3>
         <div class="row building-info">
             <div class="col-md-10">
                 <p>
@@ -39,6 +39,9 @@
                 <form th:action="'/buildings/' + ${building.getId()} + '/edit'">
                     <button type="submit" class="btn btn-primary">Edit Building</button>
                 </form>
+                <form class="mt-2" th:action="'/buildings/' + ${building.getId()} + '/pay'">
+                    <button type="submit" class="btn btn-success">Pay</button>
+                </form>
             </div>
         </div>
 
@@ -70,4 +73,8 @@
         </th:block>
 
     </div>
+</div>
+
+<div class="row justify-content-center mt-3">
+    <button type="button" class="btn btn-secondary" onclick="window.location.href='/'">Back</button>
 </div>
