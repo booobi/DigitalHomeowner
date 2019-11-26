@@ -61,11 +61,11 @@
         </div>
     </form>
 
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center mt-3 mr-0">
         <button type="button" class="btn btn-secondary" onclick="window.location.href='/'">Back</button>
     </div>
 
-    <div class="row justify-content-center mt-2">
+    <div class="row justify-content-center mt-2 mr-0">
         <form class="col-sm-9" th:action="'/buildings/' + ${building.getId()} + '/delete'" method="POST">
             <button class="btn btn-danger" type="submit">Delete</button>
         </form>
